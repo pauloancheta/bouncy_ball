@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.main_container {
+  height: 95vh;
+  border: 1px solid red;
+  // position: relative;
+}
+
+#main_ball {
+  height: 100px;
+  width: 100px;
+  left: 20px;
+  position: fixed;
+  bottom: 26px;
+  background-image: image_url('ball.png');
+  background-size: 100px 100px;
+}
