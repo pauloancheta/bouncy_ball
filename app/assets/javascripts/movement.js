@@ -10,10 +10,10 @@ $(document).ready(function(){
       var enemy_y2 = enemy.offset().top + enemy.width();
 
       // since my ball is has a padding from image it needs to be subtracted
-      var main_char_x1 = main_character.offset().left - 10;
-      var main_char_x2 = main_character.offset().left + main_character.width() - 10;
+      var main_char_x1 = main_character.offset().left + 10;
+      var main_char_x2 = main_character.offset().left + main_character.width() -  10;
       var main_char_y1 = main_character.offset().top - 10;
-      var main_char_y2 = main_character.offset().top + main_character.width() - 10;  
+      var main_char_y2 = main_character.offset().top + main_character.width() - 20;  
 
       if(enemy_x1 < main_char_x2 && enemy_x2 > main_char_x1 ){ // check horizontal collision
         if(enemy_y1 < main_char_y2){
@@ -22,6 +22,30 @@ $(document).ready(function(){
       }
     }
     return false;
+  }
+
+  var move_left = function(){
+    var move = TweenLite.to( ball , 1 , { 
+      left: "+=200px",
+      onUpdate: function(){
+        if(didCollide(ball, block)){
+          move.kill();
+          alert("collision");
+        }
+      } 
+    });
+  }
+
+  var move_right = function() {
+    var move = TweenLite.to( ball , 1 , { 
+      left:"-=200px",
+      onUpdate: function(){
+        if(didCollide(ball, block)){
+          move.kill();
+          alert("collision");
+        }
+      }
+    });
   }
   
   $(this).on('keydown', function(e) {
@@ -37,26 +61,10 @@ $(document).ready(function(){
 
   $(this).on('keydown', function(e){
     if(e.which === 39){
-      var move_left = TweenLite.to( ball , 1 , { 
-        left: "+=200px",
-        onUpdate: function(){
-          if( didCollide(ball, block) ){
-            move_left.kill();
-            alert("COLLISION!");
-          }
-        } 
-      });
+      move_left( didCollide(ball, block) );   
     }
     if(e.which === 37){
-      var move_right = TweenLite.to( ball , 1 , { 
-        left:"-=200px",
-        onUpdate: function(){
-          if( didCollide(ball, block) ){
-            move_right.kill();
-            alert("COLLISION!");
-          }
-        }
-      });
+      move_right( didCollide(ball, block) );
     }
   });
 });
