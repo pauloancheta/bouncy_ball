@@ -1,6 +1,8 @@
 $(document).ready(function(){
-  var ball = $('#main_ball'),
-     block = $('#block');
+  var ball        = $('#main_ball'),
+      block       = $('#block'),
+      block_left  = $('#block_left');
+      block_right = $('#block_right');
 
   var didCollide = function( main_character, enemy ){
     if(typeof(enemy.offset()) !== "undefined" && typeof(enemy.offset()) !== "undefined"){
@@ -24,47 +26,78 @@ $(document).ready(function(){
     return false;
   }
 
+  var addPoint = function() {
+    var score = parseInt($('#score').text());
+    if(didCollide(ball, block_left) && block_left.hasClass('active')){
+      block_left.removeClass('active');
+      block_right.addClass('active');
+      score += 1
+    }
+    if(didCollide(ball, block_right) && block_right.hasClass('active')){
+      block_right.removeClass('active');
+      block_left.addClass('active');
+      score += 1
+    }
+
+    $('#score').text(score);
+  }
+
   var move_left = function(){
     var move = TweenLite.to( ball , 1 , { 
       left: "+=200px",
       onUpdate: function(){
         if(didCollide(ball, block)){
           move.kill();
-          alert("collision");
+          $('#score').text('0');
+          alert('collision');
         }
       } 
     });
   }
 
-  var move_right = function() {
+  var move_right = function(){
     var move = TweenLite.to( ball , 1 , { 
       left:"-=200px",
       onUpdate: function(){
         if(didCollide(ball, block)){
           move.kill();
-          alert("collision");
+          $('#score').text('0');
+          alert('collision');
         }
+      }
+    });
+  }
+
+  var move_up = function(){
+    var move = TweenLite.to( ball , 0.5 , {
+      bottom: "+=100px",
+      onStart: function(){
+        addPoint();
+      },
+      onUpdate: function(){
+        if( (ball.offset().top + 10) <= $('.main_container').offset().top ){
+          TweenLite.to(ball, 0.5, {bottom: "40px", ease: Bounce.easeOut});
+          $('#score').text('0');
+          alert('collision');
+          move.kill();
+        }
+      },
+      onComplete: function(){
+        TweenLite.to(ball, 1.5, {bottom: "40px", ease: Bounce.easeOut});
       }
     });
   }
   
   $(this).on('keydown', function(e) {
     if(e.which === 32){
-      TweenLite.to( ball , 0.5 , {
-        bottom: "+=200px",
-        onComplete: function(){
-          TweenLite.to(ball, 1.5, {bottom: "40px", ease: Bounce.easeOut});
-        }
-      });
+      move_up();
+    }
+    else if(e.which === 39){
+      move_left();   
+    }
+    else if(e.which === 37){
+      move_right();
     }
   });
 
-  $(this).on('keydown', function(e){
-    if(e.which === 39){
-      move_left( didCollide(ball, block) );   
-    }
-    if(e.which === 37){
-      move_right( didCollide(ball, block) );
-    }
-  });
 });

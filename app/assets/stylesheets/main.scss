@@ -8,6 +8,7 @@ html {
 .main_container {
   height: 95vh;
   border: 1px solid red;
+  width: 864px;
   // position: relative;
 }
 
@@ -22,11 +23,40 @@ html {
 }
 
 #block {
-  height: 200px;
+  height: 450px;
   width: 50px;
   position: fixed;
-  left: 400px;
-  bottom: 40px;
-  background-color: blue;
+  left: 415px;
+  bottom: 28px;
+  background-color: red;
+}
 
+#block_left{
+}
+
+#block_right {
+  left: 471px;
+}
+
+.scoreboard {
+  position: fixed;
+  height: 50px;
+  width: 100px;
+  margin-left: 10px;
+  #score{
+    display: inline-block;
+  }
+}
+
+.point_block {
+  position: fixed;
+  height: 100px;
+  width: 400px;
+  bottom: 28px;
+  background-color: green;
+  opacity: 0; 
+}
+
+.active {
+  opacity: .5
 }
