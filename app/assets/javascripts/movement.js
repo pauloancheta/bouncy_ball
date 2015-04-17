@@ -26,6 +26,12 @@ $(document).ready(function(){
     return false;
   }
 
+  var collision = function(){
+    $('#score').text('0');
+    alert('COLLISION!');
+    // DO ME: restart ball location
+  }
+
   var addPoint = function() {
     var score = parseInt($('#score').text());
     if(didCollide(ball, block_left) && block_left.hasClass('active')){
@@ -48,8 +54,7 @@ $(document).ready(function(){
       onUpdate: function(){
         if(didCollide(ball, block)){
           move.kill();
-          $('#score').text('0');
-          alert('collision');
+          collision();
         }
       } 
     });
@@ -61,8 +66,7 @@ $(document).ready(function(){
       onUpdate: function(){
         if(didCollide(ball, block)){
           move.kill();
-          $('#score').text('0');
-          alert('collision');
+          collision();
         }
       }
     });
@@ -77,9 +81,8 @@ $(document).ready(function(){
       onUpdate: function(){
         if( (ball.offset().top + 10) <= $('.main_container').offset().top ){
           TweenLite.to(ball, 0.5, {bottom: "40px", ease: Bounce.easeOut});
-          $('#score').text('0');
-          alert('collision');
           move.kill();
+          collision();
         }
       },
       onComplete: function(){
