@@ -16,6 +16,7 @@
 
 //= require 'greensock/TweenLite'
 //= require 'greensock/easing/EasePack'
+//= require 'greensock/plugins/CSSPlugin'
 //= require 'greensock/jquery.gsap.js'
 
 //= require_tree .
