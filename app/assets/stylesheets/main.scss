@@ -16,7 +16,17 @@ html {
   width: 100px;
   left: 20px;
   position: fixed;
-  bottom: 26px;
+  bottom: 40px;
   background-image: image_url('ball.png');
   background-size: 100px 100px;
+}
+
+#block {
+  height: 200px;
+  width: 200px;
+  position: fixed;
+  left: 400px;
+  bottom: 40px;
+  background-color: blue;
+
 }
