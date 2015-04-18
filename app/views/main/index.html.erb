@@ -1,13 +1,26 @@
-<div class="main_container">
-  <div id="main_ball"></div>
-  <div id="block"></div>
-  <div class="point_block" id="block_left"></div>
-  <div class="point_block active" id="block_right"></div>
 
-  <div class="scoreboard">Your Score is: <div id="score">0</div></div>
-  <div class="instructions">
-    <span class="glyphicon glyphicon-arrow-left"></span> to go left,
-    <span class="glyphicon glyphicon-arrow-right"></span> to go right, space to jump. <br>
-    Get as much green boxes as you can! Goodluck!
+  <div class="main_container">
+    <div id="main_ball"></div>
+    <div id="block"></div>
+    <div class="point_block" id="block_left"></div>
+    <div class="point_block active" id="block_right"></div>
+
+    <div class="scoreboard">Your Score is: <div id="score">0</div></div>
+    <div class="instructions">
+      <span class="glyphicon glyphicon-arrow-left"></span> to go left,
+      <span class="glyphicon glyphicon-arrow-right"></span> to go right, space to jump. <br>
+      Get as much green boxes as you can! Goodluck!
+    </div>
   </div>
-</div>
+
+  <div class="leaderboard">
+    <center>
+    <h2> Leaderboard </h2>
+    <% if @leaderboards %>
+      <% @leaderboards.each do |l| %>
+        <p><%= l.name %>  <%= l.score %> </p>
+        <hr>
+      <% end %>
+    <% end %>
+    </center>
+  </div>

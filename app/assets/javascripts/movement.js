@@ -39,18 +39,26 @@ $(document).ready(function(){
 
   var addPoint = function() {
     var score = parseInt($('#score').text());
-    if(didCollide(ball, block_left) && block_left.hasClass('active')){
-      block_left.removeClass('active');
-      block_right.addClass('active');
+    if(didCollide(ball, block_left) && block_left.hasClass('active') || 
+       didCollide(ball, block_right) && block_right.hasClass('active') ){
+      block_left.toggleClass('active');
+      block_right.toggleClass('active');
       score += 1
-    }
-    if(didCollide(ball, block_right) && block_right.hasClass('active')){
-      block_right.removeClass('active');
-      block_left.addClass('active');
-      score += 1
-    }
 
-    $('#score').text(score);
+      if(block.height() < 450){
+        block.css('height', '+=50px');
+        //start moving the box? maybe
+      }
+
+      $('#score').text(score);
+
+      // if score is more than the top scorer, automatically post it with an anonymous name
+      // create this with ajax post request.
+      // also ask the name of the user when the game ends and update the scoreboard
+      // if(score > 10){
+      //   //DO ME
+      // }
+    }
   }
 
   var move_left = function(){

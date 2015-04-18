@@ -11,6 +11,7 @@ html {
   border: 1px solid red;
   width: 864px;
   position: relative;
+  display: inline-block;
 }
 
 #main_ball {
@@ -24,7 +25,7 @@ html {
 }
 
 #block {
-  height: 450px;
+  height: 100px;
   width: 50px;
   position: fixed;
   left: 417px;
@@ -66,4 +67,12 @@ html {
 .instructions {
   position: fixed;
   left: 500px;
+}
+
+.leaderboard {
+  border: 1px solid blue;
+  display: inline-block;
+  height: 95vh;
+  width: 200px;
+  position: fixed;
 }
