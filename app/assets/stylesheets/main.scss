@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  margin-left: 10px;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -9,7 +10,7 @@ html {
   height: 95vh;
   border: 1px solid red;
   width: 864px;
-  // position: relative;
+  position: relative;
 }
 
 #main_ball {
@@ -26,8 +27,8 @@ html {
   height: 450px;
   width: 50px;
   position: fixed;
-  left: 415px;
-  bottom: 28px;
+  left: 417px;
+  bottom: 35px;
   background-color: red;
 }
 
@@ -35,7 +36,7 @@ html {
 }
 
 #block_right {
-  left: 471px;
+  left: 474px;
 }
 
 .scoreboard {
@@ -43,6 +44,7 @@ html {
   height: 50px;
   width: 100px;
   margin-left: 10px;
+  display: inline-block;
   #score{
     display: inline-block;
   }
@@ -52,11 +54,16 @@ html {
   position: fixed;
   height: 150px;
   width: 400px;
-  bottom: 28px;
+  bottom: 35px;
   background-color: green;
   opacity: 0; 
 }
 
 .active {
   opacity: .5
+}
+
+.instructions {
+  position: fixed;
+  left: 500px;
 }

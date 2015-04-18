@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 
 //= require 'greensock/TweenLite'
 //= require 'greensock/easing/EasePack'
