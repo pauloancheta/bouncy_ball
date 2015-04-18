@@ -28,8 +28,13 @@ $(document).ready(function(){
 
   var collision = function(){
     $('#score').text('0');
-    alert('COLLISION!');
-    // DO ME: restart ball location
+    var reload = confirm('You died, would you like to restart?');
+    if ( reload ){
+      window.location.reload();
+    }
+    else{
+      alert('Thank you for playing!');
+    }
   }
 
   var addPoint = function() {
